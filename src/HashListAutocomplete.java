@@ -29,6 +29,8 @@ public class HashListAutocomplete implements Autocompletor {
 
     @Override
     public void initialize(String[] terms, double[] weights) {
+        myMap.clear();
+
         myTerms = new Term[terms.length];
 
         for (int i = 0; i < terms.length; i++) {
@@ -57,8 +59,7 @@ public class HashListAutocomplete implements Autocompletor {
         if (mySize == 0) {
 
             for(String s : myMap.keySet()) {
-                mySize += BYTES_PER_DOUBLE +
-                        BYTES_PER_CHAR*s.length();
+                mySize += BYTES_PER_CHAR*s.length();
             }
 
             for(Term t : myTerms) {
