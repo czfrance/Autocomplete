@@ -21,7 +21,9 @@ public class AutocompleteDriver {
             weights[k] = weight;
         }
 
-        Autocompletor auto = new BruteAutocomplete(words,weights);
+        //Autocompletor auto = new BruteAutocomplete(words,weights);
+        //Autocompletor auto = new BinarySearchAutocomplete(words,weights);
+        Autocompletor auto = new HashListAutocomplete(words,weights);
 
         int k = 20;
         while (true) {

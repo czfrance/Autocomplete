@@ -34,7 +34,22 @@ public class PrefixComparator implements Comparator<Term> {
 
     @Override
     public int compare(Term v, Term w) {
-        // change this to use myPrefixSize as specified
-        return v.getWord().compareTo(w.getWord());
+        int minLen = Math.min(v.getWord().length(), w.getWord().length());
+
+        for (int i = 0; i < Math.min(myPrefixSize, minLen); i++) {
+            if (v.getWord().charAt(i) < w.getWord().charAt(i)) {
+                return -1;
+            }
+            if (v.getWord().charAt(i) > w.getWord().charAt(i)) {
+                return 1;
+            }
+        }
+        if (v.getWord().length() > w.getWord().length() && minLen < myPrefixSize) {
+            return 1;
+        }
+        else if (v.getWord().length() < w.getWord().length() && minLen < myPrefixSize) {
+            return -1;
+        }
+        return 0;
     }
 }
