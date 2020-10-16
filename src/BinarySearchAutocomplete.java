@@ -96,7 +96,8 @@ public class BinarySearchAutocomplete implements Autocompletor {
 	 *         no such words exist, reutrn an empty array
 	 * @throws NullPointerException if prefix is null
 	 */
-	
+
+	//logN + MlogK + k
 	@Override
 	public List<Term> topMatches(String prefix, int k) {
 

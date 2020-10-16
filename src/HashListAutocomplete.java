@@ -17,6 +17,7 @@ public class HashListAutocomplete implements Autocompletor {
     }
 
 
+    //O(1)
     @Override
     public List<Term> topMatches(String prefix, int k) {
         if (myMap.get(prefix) == null) {

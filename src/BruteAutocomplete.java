@@ -18,6 +18,8 @@ public class BruteAutocomplete implements Autocompletor {
 	 * @throws IllegalArgumentException if any elements of weights is negative
 	 * @throws IllegalArgumentException if any elements of terms is duplicate
 	 */
+
+
 	public BruteAutocomplete(String[] terms, double[] weights) {
 
 		if (terms == null || weights == null) {
@@ -30,6 +32,7 @@ public class BruteAutocomplete implements Autocompletor {
 		initialize(terms,weights);
 	}
 
+	//N + Mlogk + k
 	@Override
 	public List<Term> topMatches(String prefix, int k) {
 		if (k < 0) {

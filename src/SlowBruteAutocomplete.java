@@ -3,6 +3,17 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+
+/**
+ * Extends BruteAutocomplete, overriding the topMatches method. Overridden method is
+ * less efficient with complexity N + MlogM. All the terms are looped through to find all the
+ * terms (there are M of them) with target prefix (N). Then, all M terms are sorted (MlogM) and the
+ * top k are returned.
+ *
+ * This is the least efficient class out of all classes - BruteAutocomplete, BinarySearchAutocomplete,
+ * and HashListAutocomplete as it searches through all N Terms and then sorts all subsequent M Terms.
+ */
+
 public class SlowBruteAutocomplete extends BruteAutocomplete{
 
     /**
@@ -15,10 +26,13 @@ public class SlowBruteAutocomplete extends BruteAutocomplete{
      * @throws IllegalArgumentException if any elements of weights is negative
      * @throws IllegalArgumentException if any elements of terms is duplicate
      */
+
+
     public SlowBruteAutocomplete(String[] terms, double[] weights) {
         super(terms, weights);
     }
 
+    //N + MlogM
     @Override
     public List<Term> topMatches(String prefix, int k) {
         List<Term> list = new ArrayList<>();
