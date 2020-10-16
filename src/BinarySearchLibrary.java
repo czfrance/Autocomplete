@@ -32,11 +32,6 @@ public class BinarySearchLibrary {
 		return index+1;
 	}
 
-	public static int calcMid(int low, int high) {
-		int sum = low + high;
-		return sum / 2;
-	}
-
 	/**
 	 * Return smallest index of target in list using comp
 	 * Guaranteed to make ceiling(1 + log(list.size())) comparisons
@@ -49,14 +44,18 @@ public class BinarySearchLibrary {
 	public static <T>
     	int firstIndex(List<T> list, 
 	               	   T target, Comparator<T> comp) {
-		
+
+		if (list.size() == 0) {
+			return -1;
+		}
+
 		int low = -1;
 		int high = list.size()-1;
 		
 		// (low,high] contains target
 
 		while (low + 1 != high) {
-			int mid = calcMid(low, high);
+			int mid = (low+high) / 2;
 			if (comp.compare(list.get(mid), target) < 0) {
 				low = mid;
 			}
@@ -91,13 +90,17 @@ public class BinarySearchLibrary {
 	public static <T>
 	int lastIndex(List<T> list, 
                	  T target, Comparator<T> comp) {
-		
+
+		if (list.size() == 0) {
+			return -1;
+		}
+
 		int low = 0;
 		int high = list.size();
 		
 		// target in [low,high)
 		while (low + 1 != high) {
-			int mid = calcMid(low, high);
+			int mid = (low+high) / 2;
 			if (comp.compare(list.get(mid), target) <= 0) {
 				low = mid;
 			}
